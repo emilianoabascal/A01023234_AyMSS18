@@ -1,6 +1,7 @@
 #ifndef PROTOTYPE_H
 #define PROTOTYPE_H
 #include <iostream>
+using namespace std;
 
 class Prototype
 {
@@ -25,8 +26,12 @@ public:
 		return new Concrete2(*this);
 	}
 };
+#endif
 
-int main()
-{
+int main(){
 	Concrete1* c1 = new Concrete1;
+
+		int x;
+		cin >> x;
+		return 0;
 }
