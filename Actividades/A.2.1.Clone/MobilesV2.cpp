@@ -28,14 +28,14 @@ class Mobiles{
 		void restaurar(){
 			cout << "El dispositivo " <<modelo<< " se restauro" << endl;
 		}
-
 };
 
 template<class A, class B>
-class ClaseDerivada:public B{
+class ClaseDerivada: public B{
 	public:
-		Mobiles* clone(){
-			return new A(static_cast<A&> (*this));
+		B* clone(){
+			
+			return new A(dynamic_cast<A&> (*this));
 		}
 		ClaseDerivada(){}
 };
@@ -67,10 +67,11 @@ class Smartphone: public ClaseDerivada<Smartphone, Mobiles>{
 			version = ver;
 		}
 		Smartphone(){}
-		Smartphone(const Smartphone& m){
+		Smartphone(const Mobiles& m){
 			marca = m.marca;
 			SN = m.SN;
 			modelo = m.modelo;
+			version = m.version;
 		}
 };
 
@@ -82,6 +83,9 @@ class Smartwatch: public ClaseDerivada<Smartwatch, Mobiles>{
 			modelo = mod;
 			version = ver;
 		}
+		void doStuff(){
+			cout << "hola";
+		}
 		Smartwatch(){}
 		Smartwatch(const Smartwatch& m){
 			marca = m.marca;
@@ -91,12 +95,12 @@ class Smartwatch: public ClaseDerivada<Smartwatch, Mobiles>{
 };
 
 int main(){
-	Tablet* t = new Tablet("Samsung", "12341234", "TS3", "2");
-	Tablet* t2 = new Tablet("Apple", "12341234", "iPAD", "3");
-	Smartphone* sp = new Smartphone("Samsung", "12341234", "S9", "5");
-	Smartphone* sp2 = new Smartphone("Apple", "12341234", "iPhone", "10");
-	Smartwatch* sw = new Smartwatch("Samsung", "12341234", "LocoshonWash", "1");
-	Smartwatch* sw2 = new Smartwatch("Apple", "12341234", "Apple Watch", "4");
+	Mobiles* t = new Tablet("Samsung", "12341234", "TS3", "2");
+	Mobiles* t2 = new Tablet("Apple", "12341234", "iPAD", "3");
+	Mobiles* sp = new Smartphone("Samsung", "12341234", "S9", "5");
+	Mobiles* sp2 = new Smartphone("Apple", "12341234", "iPhone", "10");
+	Mobiles* sw = new Smartwatch("Samsung", "12341234", "LocoshonWash", "1");
+	Mobiles* sw2 = new Smartwatch("Apple", "12341234", "Apple Watch", "4");
 	t->encender();
 	t->apagar();
 	t->restaurar();
@@ -120,7 +124,6 @@ int main(){
 	sw2->encender();
 	sw2->apagar();
 	sw2->restaurar();
-	sw2->reiniciar();
-	
+	sw2->reiniciar();	
 	return 0;
 }
