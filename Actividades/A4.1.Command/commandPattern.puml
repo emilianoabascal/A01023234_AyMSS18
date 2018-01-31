@@ -1,0 +1,39 @@
+@startuml
+scale 2
+
+class Client{
+
+
+}
+
+class Invoker{
+
+
+}
+
+class Command{
+    state;
+    +Execute();
+
+}
+
+class Receiver{
+   +Action();
+}
+class ConcreteCommand{
+    state;
+    +Execute();
+}
+
+note "receiver.Action()" as n
+
+Client..>ConcreteCommand
+Client -> Receiver
+ConcreteCommand->Receiver: Receiver
+ConcreteCommand-|>Command
+Invoker o-->Command
+n--ConcreteCommand
+
+
+@enduml
+
