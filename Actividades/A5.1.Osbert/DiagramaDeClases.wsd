@@ -1,0 +1,54 @@
+@startuml
+
+class Galeria{
+  -Cuadro<Action>:string;
+}
+
+class Cuadro{
+    -iD_obra:string;
+    -nombre:string;
+    -artista:string;
+    -iD_obra:string;
+    -precio:string;
+  
+}
+class Cliente{
+    -bool compra;
+    +compra();
+}
+
+class Venta{
+    -nombre:string; 
+    -direccion:string;
+    -precioCompra:int;
+}
+
+class Subasta{
+    -año_subasta:int;
+    -Precio:float; 
+    +getArtista():string;
+    +getAño():int;
+    +getPrecio():float;
+}
+class Subastas{
+    -Subastas<Action>:Subasta;
+    +getInformation():string;
+    +PrecioDeCompra(año_subasta):int;
+}
+
+class osbert{
+   +compra();
+   +GeneraCuadro();
+   +GeneraOferta(Subastas<Action>);
+  
+}
+
+
+Galeria o-- Cuadro 
+Subastas o-- Subasta
+Venta *-- Cuadro 
+osbert "1" - "1..*" Cliente
+osbert *-- Subastas
+(osbert,Cliente)..Cuadro
+Cuadro <-- Subasta
+@enduml
