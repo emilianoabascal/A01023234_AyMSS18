@@ -1,0 +1,6 @@
+1,emiliano1,abascal1,phone,e@g.com1,12345678901,lf1,105,tlacopac1
+2,emiliano2,abascal2,mail,e@g.com2,12345678902,lf2,106,tlacopac2
+3,emiliano3,abascal3,mail,e@g.com3,12345678903,lf3,107,tlacopac3
+4,emiliano4,abascal4,mail,e@g.com4,12345678904,lf4,108,tlacopac4
+5,emiliano5,abascal5,mail,e@g.com5,12345678905,lf5,109,tlacopac5
+6,emiliano6,abascal6,sms,e@g.com6,12345678906,lf6,110,tlacopac6

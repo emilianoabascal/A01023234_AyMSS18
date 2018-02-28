@@ -1,0 +1,47 @@
+@startuml
+
+class Caller{
+  -Command
+  +setCommand()
+  +executeAction(string tipo)
+}
+
+class Command{
+ +execute(string tipo)
+}
+
+class Client{
+-vector<string> id;
+-vector<string> cusname;
+-vector<string> cuslast;
+-vector<string> comtype;
+-vector<string> phone;
+-vector<string> mail;
+-vector<string> street;
+-vector<string> number;
+-vector<string> colony; 
++readFile()
++sender()
+    
+}
+
+class Reciver{
++sendMail()
++sendSms()
++phoneCall()    
+}
+class ConcreteCommand{
+-Reciver
+ +execute(string nombre)   
+}
+
+
+Reciver <-Client
+
+Command <|-ConcreteCommand 
+Command <-o Caller 
+Reciver <-ConcreteCommand:Reciver 
+Reciver <..ConcreteCommand 
+
+
+@end

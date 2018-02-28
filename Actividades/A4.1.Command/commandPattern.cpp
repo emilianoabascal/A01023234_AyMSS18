@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+
+
 typedef int(*f)(int, int);//Opcion 1
 template <class type> type suma(type n, type b){
 	return n + b;
@@ -11,7 +13,6 @@ template <class type> type resta(int n, int b){
 template <class type> type multiplicacion(int n, int b){
 	return n * b;
 }
-
 
 int execute(int n, int b, int(*f)(int, int)){//opcion 0
 	return f(n, b);
