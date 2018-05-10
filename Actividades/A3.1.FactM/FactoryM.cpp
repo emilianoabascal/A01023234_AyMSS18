@@ -52,5 +52,6 @@ class ConcreteCreator: public Creator{
 int main() {
 	Creator* cliente = new ConcreteCreator();
 	Product* miProducto = cliente -> createProduct(1);
+	Product* miProducto2 = cliente -> createProduct(2);
 	return 0;
 }

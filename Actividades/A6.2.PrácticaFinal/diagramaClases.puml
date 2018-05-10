@@ -1,0 +1,92 @@
+@startuml 
+
+class Printers{
+    -string tipo
+
+    +Printers()
+    +Printers(string t):tipo(t)
+}
+class Documents {
+    -string nombre
+
+    +printOn(Printers p)
+}
+
+class Base{
+
+}
+class Subclass{
+
+}
+class CloneFunction{
+    +Base* clone()
+}
+
+class Laser {
+    -string t
+
+    +Laser()
+    +Laser(string t)
+    +Laser(const Laser& temp)
+    +Printers* clone()
+}
+class Inyeccion {
+    -string t
+
+    +Inyeccion()
+    +Inyeccion(string t)
+    +Inyeccion(const Inyeccion& temp)
+    +Printers* clone()
+}
+
+class PDF {
+    -string t
+
+    +PDF()
+    +PDF(string t)
+    +PDF(const PDF& temp)
+    +Printers* clone()
+}
+
+class Postscript {
+    -string t
+
+    +Postscript()
+    +Postscript(string t)
+    +Postscript(const Postscript& temp)
+    +Printers* clone()
+}
+
+class Creator{
+    -static int cont
+    -static Creator* instance;
+
+    +Creator()
+    +static Creator* getInstance()
+    +static void destroyInstance()
+}
+
+' Cliente .> mandaEmail
+' Cliente .> mandaSMS
+' Cliente .> llamaCliente
+' Command --> Email
+' Command --> SMS
+' Command --> Llamada
+' Invoker o--> Command
+' mandaEmail -> Receiver
+' mandaSMS -> Receiver
+' llamaCliente -> Receiver
+' Cliente -> Receiver
+
+Laser .> CloneFunction
+PDF .> CloneFunction
+Inyeccion .> CloneFunction
+Postscript .> CloneFunction
+Printers <-- Laser
+Printers <-- PDF
+Printers <-- Inyeccion
+Printers <-- Postscript
+Printers <-- Documents
+CloneFunction --> Base
+CloneFunction --> Subclass
+@enduml

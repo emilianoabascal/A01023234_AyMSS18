@@ -188,32 +188,32 @@ public:
 	}
 };
 
-
+void Aprendizaje::acepta(Visitor* visitor){
+	visitor->visit(*this);
+}
 void Estrategia::acepta(Visitor* visitor){
 	visitor->visit(*this);
 }
 void Survival::acepta(Visitor* visitor){
 	visitor->visit(*this);
 }
-void Aprendizaje::acepta(Visitor* visitor){
-	visitor->visit(*this);
-}
+
 
 class Creator{
 private:
 	static Creator* instance;
 	static int cont;
-	Creator(){
-		cout << "Constructing creator\n";
-	}
-	~Creator(){
-		cout << "Destroying creator\n";
-	}
 	static void agregarReferencia(){
 		++cont;
 	}
 	static void eliminarReferencia(){
 		--cont;
+	}
+	Creator(){
+		cout << "LEL Creador";
+	}
+	~Creator(){
+		cout << "Destructor del que crea";
 	}
 public:
 	static Creator* getInstance(){
@@ -248,11 +248,12 @@ public:
 Creator* Creator::instance = nullptr;
 int Creator::cont = 0;
 
-class User : public Observer{
+class Usuario : public Observer{
 public:
-	string name;
-	void update(string release, Videojuego *v){
-		cout << name << ": El juego " << v->nombre << " me hace muy feliz.\n";
+	string nombre;
+	Usuario(string n){ nombre = n; }
+	void update(string r, Videojuego *v){
+		cout << nombre << ": El juego " << v->nombre << " me hace muy feliz.\n";
 	}
 };
 
@@ -279,9 +280,6 @@ public:
 			}
 		}
 	}
-
-	
-
 	
 	void eliminarJuego(int numeroDeSerie){
 		for(int i = 0; i < almacen.size(); i++){
@@ -371,7 +369,6 @@ public:
 };
 
 int main () {
-	int option;
 	bool menu = true;
 	int entrada;
 	int vjuegosDisponibles;
