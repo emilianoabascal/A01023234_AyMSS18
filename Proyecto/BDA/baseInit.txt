@@ -1,0 +1,1 @@
+create (a:Departamento {nombre:"Productos Frescos"}),(b:Departamento {nombre:"Alimentos Congelados"}), (c:Departamento {nombre:"Cereales"}), (d:Departamento {nombre:"Pan"}), (e:Departamento {nombre:"Pan"}), (f:Departamento {nombre:"Pasta"}), (g:Departamento {nombre:"Lacteos"})

@@ -1,0 +1,28 @@
+app:
+  image: node:4    ## node.js v4
+  volumes:          ## adds app folder to the container
+   - .:/app
+  links:            ## connects neo4j to app container
+   - neo4j
+  ports:            ## publish ports
+   - "3000:3000"
+  working_dir: /app
+  entrypoint: node app.js   ## starts application
+
+web:
+  image: nginx
+  volumes:
+   - ./frontend:/usr/share/nginx/html
+  ports:
+   - "8080:80"
+  environment:
+   - NGINX_HOST=foobar.com
+   - NGINX_PORT=80
+
+neo4j:
+  image: neo4j:3.0      ## we use neo4j v3
+  ports:                    ## publish ports to have Web UI
+   - "7474:7474"
+  volumes:                  ## adds folder with login/password
+   - ./db/data:/data
+
